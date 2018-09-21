@@ -36,7 +36,6 @@ app.use('/api/auth/', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-// A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {
   return res.json({
     data: 'rosebud'
@@ -50,12 +49,6 @@ app.get('/api/status', (req, res) => {
   });
 });
 
-// app.use('*', (req, res) => {
-//   return res.status(404).json({ message: 'Not Found' });
-// });
-
-// Referenced by both runServer and closeServer. closeServer
-// assumes runServer has run and set `server` to a server object
 let server;
 
 function runServer(databaseUrl, port = PORT) {
