@@ -43,6 +43,13 @@ app.get('/api/protected', jwtAuth, (req, res) => {
   });
 });
 
+app.get('/api/status', (req, res) => {
+  return res.json({
+    message: 'Up and running',
+    timestamp: new Date(),
+  });
+});
+
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
 });

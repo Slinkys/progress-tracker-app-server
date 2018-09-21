@@ -139,11 +139,8 @@ router.put('/:userId', (req, res) => {
   return User.findByIdAndUpdate(req.params.userId, 
     updateObject, {new: true})
     .then((obj) => {
-      console.log('update successful', obj);  
-
-      res.json(obj.serialize()); //this is maybe not most secure, TODO: fix this
+      res.json(obj.serialize()); 
     });
 });
-
 
 module.exports = {router};
